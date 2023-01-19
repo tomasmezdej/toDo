@@ -40,7 +40,7 @@
               <v-icon>
                 mdi-calendar
               </v-icon>
-              Due to {{ new Date(task.deadline).toLocaleDateString() }}
+              Due to {{ `${new Date(task.deadline).toLocaleDateString()} - ${task.time}` }}
             </small>
             <v-icon
               color="error"

@@ -10,7 +10,7 @@
         <v-row>
           <v-col
             cols="12"
-            class="d-flex justify-space-between"
+            class="d-flex justify-space-between mt-5"
           >
             <h2>
               List: {{ loadedList.title }}
@@ -57,7 +57,13 @@
             </v-row>
           </div>
         </v-expand-transition>
-
+        <v-text-field
+          class="mt-2"
+          v-model="searchVal"
+          solo
+          label="Search item"
+          clearable
+        ></v-text-field>
         <TaskElement
           v-for="(task, index) in sortedTasks" :key="index"
           :task="task"
@@ -73,7 +79,7 @@
       <v-col
         cols="12"
         lg="6"
-        class="order-lg-2 order-1"
+        class="order-lg-2 order-1n mt-5"
       >
         <h2>
           Create new task
@@ -90,6 +96,7 @@
 export default {
   data() {
     return {
+      searchVal: '',
       loadedList: null,
       tasks: [],
       sortPanel: false,
@@ -111,7 +118,20 @@ export default {
         .filter((task) => (this.filterByStatus === null) ? task.status === true || task.status === false : task.status === this.filterByStatus)
         .sort((taskA, taskB) => (this.sortAlphabetically === 'az') ? taskA.title.localeCompare(taskB.title) : taskB.title.localeCompare(taskA.title))
 
-      return sorted
+      try {
+        return sorted.filter(
+          (task) =>
+            task.title.normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .toLowerCase()
+              .includes(
+                this.searchVal
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()))
+      } catch (error) {
+        return sorted
+      }
     }
   },
   methods: {
@@ -142,6 +162,7 @@ export default {
         title: newTask.name,
         description: newTask.descr,
         deadline: newTask.deadline,
+        time: newTask.time,
         status: false
       }
       this.$axios.post(`/tasks`, task)

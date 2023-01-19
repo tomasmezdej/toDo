@@ -103,8 +103,6 @@ export default {
   },
   computed: {},
   methods: {
-    test() {
-    },
     login() {
       if (this.validateLogin()) {
         this.$store.commit('setUserName', this.name)

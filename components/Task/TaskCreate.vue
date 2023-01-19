@@ -65,7 +65,7 @@
             <v-btn
               text
               color="primary"
-              @click="$refs.menu.save(date)"
+              @click="$refs.menu.save(task.deadline)"
             >
               OK
             </v-btn>
@@ -83,7 +83,7 @@
           v-model="timeMenu"
           :close-on-content-click="false"
           :nudge-right="40"
-          :return-value.sync="time"
+          :return-value.sync="task.time"
           transition="scale-transition"
           offset-y
           max-width="290px"
@@ -91,7 +91,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-text-field
-              v-model="time"
+              v-model="task.time"
               label="Time"
               prepend-inner-icon="mdi-clock-time-four-outline"
               readonly
@@ -103,9 +103,9 @@
           <v-time-picker
             v-if="timeMenu"
             format="24"
-            v-model="time"
+            v-model="task.time"
             full-width
-            @click:minute="$refs.timeMenu.save(time)"
+            @click:minute="$refs.timeMenu.save(task.time)"
           ></v-time-picker>
         </v-menu>
       </v-col>
@@ -144,16 +144,27 @@
   </v-form>
 </template>
 <script>
+
+class Task {
+  constructor() {
+    this.name = null
+    this.descr = null
+    this.deadline = new Date().toISOString().split('T')[0]
+    this.time = '12:00'
+  }
+  resetTask() {
+    this.name = null
+    this.descr = null
+    this.deadline = new Date().toISOString().split('T')[0]
+    this.time = '12:00'
+  }
+}
+
 export default {
   data() {
     return {
       createFormModel: false,
-      task: {
-        name: null,
-        descr: null,
-        deadline: new Date().toISOString().split('T')[0]
-      },
-      time: new Date().toISOString().split('T')[1].substring(0, 5),
+      task: new Task(),
       menu: false,
       timeMenu: false,
       requestSent: false
@@ -165,14 +176,6 @@ export default {
     }
   },
   methods: {
-    resetTask() {
-      const taskTemplate =  {
-        name: null,
-        descr: null,
-        deadline: new Date().toISOString().split('T')[0]
-      }
-      this.task = taskTemplate
-    },
     createTask() {
       if (this.validateCreateTask()) {
         this.$emit('create', this.task)
@@ -180,7 +183,7 @@ export default {
         setTimeout(() => {
           this.requestSent = false
         }, 500);
-        this.resetTask()
+        this.task.resetTask()
       }
     }
   },

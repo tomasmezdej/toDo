@@ -24,6 +24,9 @@ Vue.mixin({
     }
   },
   methods: {
+    test() {
+      alert('TEST')
+    },
     validateLogin() {
       return this.$refs.loginForm.validate()
     },
