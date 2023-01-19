@@ -10,7 +10,7 @@ export default {
   ssr: true,
 
   generate: {
-    dir: 'dist'
+    fallback: true
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
