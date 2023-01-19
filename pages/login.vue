@@ -1,12 +1,13 @@
 <template>
-  <div class="login-page d-flex align-center justify-left flex-column">
+  <div class="login-page d-flex align-center justify-left flex-column mt-15">
     <div class="step-one">
       <div>
         <img src="~/assets/img/login.png" alt="login image">
       </div>
       <div>
         <h2
-          class="mb-5"
+          class="mb-5 "
+          :class="(step === 0) ? '' : 'ml-3' "
         >
           {{
             (step === 0)
