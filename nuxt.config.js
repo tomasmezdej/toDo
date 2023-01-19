@@ -12,7 +12,7 @@ export default {
   generate: {
     fallback: true
   },
-  buildDir: 'nuxt-dist',
+  buildDir: 'dist',
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
