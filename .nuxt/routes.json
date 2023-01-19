@@ -1,0 +1,37 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "C:\\\\Users\\\\tmezd\\\\Desktop\\\\Nový priečinok (2)\\\\toDoApp\\\\pages\\\\inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_2ded8e11"
+  },
+  {
+    "name": "list",
+    "path": "/list",
+    "component": "C:\\\\Users\\\\tmezd\\\\Desktop\\\\Nový priečinok (2)\\\\toDoApp\\\\pages\\\\list.vue",
+    "chunkName": "pages/list",
+    "_name": "_710f0a12"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\tmezd\\\\Desktop\\\\Nový priečinok (2)\\\\toDoApp\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_0cb306e0"
+  },
+  {
+    "name": "lists-id",
+    "path": "/lists/:id?",
+    "component": "C:\\\\Users\\\\tmezd\\\\Desktop\\\\Nový priečinok (2)\\\\toDoApp\\\\pages\\\\lists\\\\_id.vue",
+    "chunkName": "pages/lists/_id",
+    "_name": "_2f1251de"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\tmezd\\\\Desktop\\\\Nový priečinok (2)\\\\toDoApp\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_430b63c9"
+  }
+]
